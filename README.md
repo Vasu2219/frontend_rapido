@@ -1,70 +1,238 @@
-# Getting Started with Create React App
+# Rapido Corporate Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional, modern React frontend for the Rapido Corporate Ride Scheduling System. Built with cutting-edge technologies and best practices to deliver an exceptional user experience.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### Core Features
+- **User Authentication & Authorization** with JWT tokens
+- **Role-based Access Control** (User/Admin)
+- **Real-time Ride Management** with live status updates
+- **Advanced Booking System** with fare estimation
+- **Comprehensive Admin Dashboard** with analytics
+- **Responsive Design** for all devices
 
-### `npm start`
+### Technical Features
+- **Modern React 19** with hooks and functional components
+- **Tailwind CSS** for beautiful, responsive styling
+- **Framer Motion** for smooth animations
+- **React Query** for efficient data fetching and caching
+- **React Hook Form** for form validation
+- **React Router** for client-side routing
+- **Toast Notifications** for user feedback
+- **Real-time Updates** with automatic refetching
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React 19** - Latest React with concurrent features
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Production-ready motion library
+- **React Query** - Powerful data synchronization
+- **React Hook Form** - Performant forms with validation
+- **React Router v6** - Declarative routing
+- **Axios** - HTTP client for API calls
+- **Recharts** - Composable charting library
+- **Heroicons** - Beautiful hand-crafted SVG icons
+- **React Hot Toast** - Elegant notifications
 
-### `npm test`
+## 📦 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd frontend
+   ```
 
-### `npm run build`
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Environment Setup**
+   Create a `.env` file in the root directory:
+   ```env
+   REACT_APP_API_URL=http://localhost:5000/api
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application will be available at `http://localhost:3000`
 
-### `npm run eject`
+## 🏗️ Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+src/
+├── components/          # Reusable UI components
+│   ├── UI/            # Basic UI components (Button, Input, etc.)
+│   └── Layout/        # Layout components
+├── contexts/           # React contexts for state management
+├── pages/             # Page components
+│   ├── Auth/          # Authentication pages
+│   ├── Dashboard/     # Dashboard pages
+│   ├── Rides/         # Ride management pages
+│   ├── Profile/       # User profile pages
+│   └── Admin/         # Admin pages
+├── services/          # API services and utilities
+└── index.js           # Application entry point
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🎨 Design System
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Color Palette
+- **Primary**: Rapido Blue (`#0ea5e9`)
+- **Success**: Green (`#22c55e`)
+- **Warning**: Orange (`#f59e0b`)
+- **Error**: Red (`#ef4444`)
+- **Neutral**: Gray scale
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Components
+- **Cards**: Consistent shadow and border radius
+- **Buttons**: Multiple variants (primary, secondary, danger, etc.)
+- **Status Badges**: Color-coded for different states
+- **Animations**: Smooth transitions and micro-interactions
 
-## Learn More
+## 🔐 Authentication
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application uses JWT-based authentication with the following features:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Automatic Token Management**: Tokens are stored in localStorage
+- **Route Protection**: Protected routes redirect to login
+- **Role-based Access**: Different views for users and admins
+- **Auto-refresh**: Automatic token refresh and logout on expiry
 
-### Code Splitting
+### Demo Credentials
+- **Employee**: `employee@company.com` / `password123`
+- **Admin**: `admin@company.com` / `admin123`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📱 Pages & Features
 
-### Analyzing the Bundle Size
+### User Pages
+1. **Login/Register** - Authentication pages with form validation
+2. **Dashboard** - Overview with ride statistics and recent rides
+3. **Book Ride** - Advanced booking form with fare estimation
+4. **My Rides** - Ride listing with filtering and real-time updates
+5. **Ride Details** - Comprehensive ride information and actions
+6. **Profile** - User profile management and settings
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Admin Pages
+1. **Admin Dashboard** - Analytics overview and pending approvals
+2. **All Rides** - Complete ride management with filtering
+3. **Analytics** - Comprehensive charts and reports
+4. **User Management** - User administration and account management
 
-### Making a Progressive Web App
+## 🔄 Real-time Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Live Status Updates**: Ride status changes are reflected immediately
+- **Auto-refresh**: Data is automatically refreshed every 30 seconds
+- **Toast Notifications**: Real-time feedback for all actions
+- **Optimistic Updates**: UI updates immediately for better UX
 
-### Advanced Configuration
+## 📊 Analytics & Charts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The admin dashboard includes comprehensive analytics:
 
-### Deployment
+- **Status Distribution**: Pie chart showing ride status breakdown
+- **Department Analytics**: Bar chart of rides by department
+- **Monthly Trends**: Area chart showing ride trends over time
+- **Key Metrics**: Total rides, pending approvals, revenue, etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🎯 Key Features
 
-### `npm run build` fails to minify
+### For Users
+- **Smart Booking**: Advanced form with fare estimation
+- **Quick Actions**: Popular locations and time presets
+- **Real-time Tracking**: Live status updates
+- **Filtering**: Advanced filtering by status, date, etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### For Admins
+- **Approval Workflow**: Easy approve/reject actions
+- **Comprehensive Analytics**: Detailed insights and reports
+- **User Management**: Full user administration
+- **Advanced Filtering**: Multi-criteria filtering and search
+
+## 🚀 Performance Optimizations
+
+- **Code Splitting**: Automatic route-based code splitting
+- **React Query**: Efficient caching and background updates
+- **Optimized Images**: WebP format with proper sizing
+- **Lazy Loading**: Components loaded on demand
+- **Memoization**: Strategic use of React.memo and useMemo
+
+## 🔧 Development
+
+### Available Scripts
+```bash
+npm start          # Start development server
+npm run build      # Build for production
+npm test           # Run tests
+npm run eject      # Eject from Create React App
+```
+
+### Code Quality
+- **ESLint**: Code linting and formatting
+- **Prettier**: Consistent code formatting
+- **TypeScript**: Type safety (optional)
+- **Component Testing**: Unit tests for components
+
+## 🌐 Browser Support
+
+- **Chrome**: 90+
+- **Firefox**: 88+
+- **Safari**: 14+
+- **Edge**: 90+
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+- **Desktop**: Full-featured experience
+- **Tablet**: Optimized layouts
+- **Mobile**: Touch-friendly interface
+
+## 🔒 Security Features
+
+- **JWT Authentication**: Secure token-based auth
+- **Route Protection**: Protected routes with role-based access
+- **Input Validation**: Comprehensive form validation
+- **XSS Protection**: Sanitized inputs and outputs
+- **CSRF Protection**: Built-in CSRF protection
+
+## 🎨 Customization
+
+### Theming
+The application uses Tailwind CSS with a custom design system. Colors and styles can be easily customized in `tailwind.config.js`.
+
+### Components
+All components are built to be reusable and customizable. Check the `components/` directory for examples.
+
+## 📈 Monitoring & Analytics
+
+- **Error Tracking**: Automatic error reporting
+- **Performance Monitoring**: Core Web Vitals tracking
+- **User Analytics**: Usage patterns and behavior
+- **Real-time Monitoring**: Live system health checks
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the ISC License.
+
+## 🆘 Support
+
+For support and questions:
+- Check the documentation
+- Review the API documentation
+- Contact the development team
+
+---
+
+**Built with ❤️ for Rapido Corporate**
