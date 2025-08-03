@@ -113,8 +113,8 @@ const RegisterPage = () => {
               {...register('lastName', {
                 required: 'Last name is required',
                 minLength: {
-                  value: 2,
-                  message: 'Last name must be at least 2 characters',
+                  value: 1,
+                  message: 'Last name must be at least 1 character',
                 },
               })}
             />
@@ -151,12 +151,14 @@ const RegisterPage = () => {
             label="Employee ID"
             placeholder="Enter your employee ID"
             error={errors.employeeId?.message}
+            style={{ textTransform: 'uppercase' }}
             {...register('employeeId', {
               required: 'Employee ID is required',
               minLength: {
                 value: 3,
                 message: 'Employee ID must be at least 3 characters',
               },
+              setValueAs: (value) => value.toUpperCase(),
             })}
           />
 
