@@ -22,7 +22,7 @@ const AdminDashboardPage = () => {
     staleTime: 30000, // Consider data stale after 30 seconds
   });
 
-  const { data: ridesData, isLoading: ridesLoading, error: ridesError } = useQuery({
+  const { data: ridesData, isLoading: ridesLoading } = useQuery({
     queryKey: ['adminRides', { status: 'pending', limit: 5 }],
     queryFn: () => adminAPI.getAllRides({ status: 'pending', limit: 5 }),
     refetchInterval: 30000, // Refetch every 30 seconds
