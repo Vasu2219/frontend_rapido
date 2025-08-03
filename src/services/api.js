@@ -29,18 +29,60 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const message = error.response?.data?.message || 'Something went wrong';
+    console.error('API Error:', error);
     
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
+    let message = 'Something went wrong';
+    
+    if (error.response) {
+      // Server responded with error status
+      const status = error.response.status;
+      const errorData = error.response.data;
+      
+      // Handle specific error cases
+      if (status === 401) {
+        if (error.config.url.includes('/auth/login')) {
+          // Login failed
+          message = errorData?.message || 'Invalid email or password';
+          if (message.toLowerCase().includes('user not found') || 
+              message.toLowerCase().includes('user does not exist') ||
+              message.toLowerCase().includes('no user found')) {
+            message = 'User does not exist';
+          } else if (message.toLowerCase().includes('password') || 
+                     message.toLowerCase().includes('credential')) {
+            message = 'Invalid email or password';
+          }
+        } else {
+          // Session expired or unauthorized access
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          window.location.href = '/login';
+          return Promise.reject(error);
+        }
+      } else if (status === 404) {
+        message = errorData?.message || 'Resource not found';
+      } else if (status === 400) {
+        message = errorData?.message || 'Invalid request';
+      } else if (status === 403) {
+        message = errorData?.message || 'Access forbidden';
+      } else if (status >= 500) {
+        message = 'Server error. Please try again later.';
+      } else {
+        message = errorData?.message || `Server error: ${status}`;
+      }
+      
+      console.error('Server Error:', errorData);
+    } else if (error.request) {
+      // Request was made but no response received
+      message = 'Unable to connect to server. Please check your internet connection.';
+      console.error('Network Error:', error.request);
+    } else {
+      // Something else happened
+      message = error.message || 'Request failed';
+      console.error('Request Error:', error.message);
     }
     
-    // Only show toast for non-401 errors to avoid spam
-    if (error.response?.status !== 401) {
-      toast.error(message);
-    }
+    // Show toast error message
+    toast.error(message);
     
     return Promise.reject(error);
   }
@@ -67,8 +109,13 @@ export const authAPI = {
 
   // Login user
   login: async (credentials) => {
-    const response = await api.post('/auth/login', credentials);
-    return response.data;
+    try {
+      const response = await api.post('/auth/login', credentials);
+      return response.data;
+    } catch (error) {
+      // Re-throw the error so it can be handled by the calling component
+      throw error;
+    }
   },
 
   // Get current user profile
